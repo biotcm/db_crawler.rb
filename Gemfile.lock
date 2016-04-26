@@ -1,0 +1,13 @@
+GEM
+  remote: https://ruby.taobao.org/
+  specs:
+    biotcm (0.7.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  biotcm
+
+BUNDLED WITH
+   1.11.2
