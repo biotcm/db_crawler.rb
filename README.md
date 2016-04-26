@@ -1,2 +1,3 @@
-# omim_spider
-A spider favors the OMIM database
+# omim_crawler.rb
+
+A crawler favors the OMIM database.
