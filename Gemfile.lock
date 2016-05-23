@@ -1,13 +1,29 @@
 GEM
   remote: https://ruby.taobao.org/
   specs:
-    biotcm (0.7.0)
+    biotcm (0.8.1)
+    childprocess (0.5.9)
+      ffi (~> 1.0, >= 1.0.11)
+    commonwatir (4.0.0)
+    ffi (1.9.10)
+    rubyzip (1.2.0)
+    selenium-webdriver (2.53.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
+    watir (5.0.0)
+      commonwatir (~> 4)
+      watir-webdriver
+    watir-webdriver (0.9.1)
+      selenium-webdriver (>= 2.46.2)
+    websocket (1.2.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   biotcm
+  watir
 
 BUNDLED WITH
    1.11.2
