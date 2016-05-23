@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'biotcm'
+require 'ruby-progressbar'
 require 'yaml'
 BioTCM.logger.level = Logger::ERROR
 
@@ -15,7 +16,10 @@ else
 end
 
 # Download materials
+progressbar = ProgressBar.create(starting_at: 0, total: mim2gene.row_keys.size, format: '%t: |%B| %a %e')
 mim2gene.row_keys.each do |mim|
+  progressbar.increment
+
   next unless mim2gene.row(mim).first.last == 'phenotype'
   next if File.exist?("crawled/#{mim}.yaml")
   puts "Downloading #{mim} ..."

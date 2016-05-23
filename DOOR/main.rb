@@ -2,6 +2,7 @@
 require 'watir'
 require 'watir-webdriver'
 require 'net/http'
+require 'ruby-progressbar'
 
 # Make the working directory
 Dir.mkdir('crawled') unless Dir.exist?('crawled')
@@ -24,7 +25,10 @@ end
 
 # Download directly
 urls = File.readlines('urls.txt').map(&:chomp)
+progressbar = ProgressBar.create(starting_at: 0, total: urls.size, format: '%t: |%B| %a %e')
 urls.each do |url|
+  progressbar.increment
+
   /id=(?<id>\d+)/ =~ url
   next if File.exist?("crawled/#{id}.txt")
 

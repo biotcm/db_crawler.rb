@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'watir'
 require 'watir-webdriver'
+require 'ruby-progressbar'
 
 # Make the working directory
 Dir.mkdir('crawled') unless Dir.exist?('crawled')
@@ -8,7 +9,11 @@ Dir.mkdir('crawled') unless Dir.exist?('crawled')
 # Start crawling
 browser = Watir::Browser.new
 browser.goto 'http://operons.ibt.unam.mx/OperonPredictor/svlByOrganism?sInitialOrg=ALL&sTypeOperon=allOperon&iOption=2'
-(0...browser.links(class: 'enlace').size).each do |index|
+num_link = browser.links(class: 'enlace').size
+progressbar = ProgressBar.create(starting_at: 0, total: num_link, format: '%t: |%B| %a %e')
+(0...num_link).each do |index|
+  progressbar.increment
+
   # Reset the state
   browser.windows.first.use
   browser.goto 'http://operons.ibt.unam.mx/OperonPredictor/svlByOrganism?sInitialOrg=ALL&sTypeOperon=allOperon&iOption=2'
