@@ -1,3 +1,3 @@
-# omim_crawler.rb
+# db_crawler.rb
 
-A crawler favors the OMIM database.
+Crawlers for all kinds of databases
