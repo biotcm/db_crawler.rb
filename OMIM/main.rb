@@ -22,8 +22,7 @@ mim2gene.row_keys.each do |mim|
 
   next unless mim2gene.row(mim).first.last == 'phenotype'
   next if File.exist?("crawled/#{mim}.yaml")
-  puts "Downloading #{mim} ..."
 
-  content = BioTCM::Databases::OMIM.new(mim).instance_variable_get(:@content)
+  content = BioTCM::Databases::OMIM.get(mim)
   File.open("crawled/#{mim}.yaml", 'w').puts YAML.dump(content)
 end
